@@ -18,13 +18,13 @@ $acc-close-width: 28px;
 $acc-close-height: 25px;
 $acc-close-total-width: 28px;
 $acc-close-total-height: 25px;
-$acc-close-image: '../../images/sprite.png';
-$acc-close: (0px, 0px, 0px, 0px, 28px, 25px, 28px, 25px, '../../images/sprite.png', 'acc-close', );
+$acc-close-image: 'images/sprite.png';
+$acc-close: (0px, 0px, 0px, 0px, 28px, 25px, 28px, 25px, 'images/sprite.png', 'acc-close', );
 $spritesheet-width: 28px;
 $spritesheet-height: 25px;
-$spritesheet-image: '../../images/sprite.png';
+$spritesheet-image: 'images/sprite.png';
 $spritesheet-sprites: ($acc-close, );
-$spritesheet: (28px, 25px, '../../images/sprite.png', $spritesheet-sprites, );
+$spritesheet: (28px, 25px, 'images/sprite.png', $spritesheet-sprites, );
 
 // The provided mixins are intended to be used with the array-like variables
 //

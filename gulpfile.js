@@ -4,6 +4,8 @@ var gutil = require('gulp-util');
 var browserSync  =  require('browser-sync').create();
 var stripCssComments = require('gulp-strip-css-comments');
 var spritesmith = require('gulp.spritesmith');
+var buffer = require('vinyl-buffer');
+var imagemin = require('gulp-imagemin');
 let cleanCSS = require('gulp-clean-css');
 var filter = require('gulp-filter');
 var sassPaths = [
@@ -127,27 +129,36 @@ gulp.task('copy', function() {
 gulp.task('sprite', function(){
   var spriteData = gulp.src('./images/sprite/*.png')
     .pipe(spritesmith({
-      imgName: './images/sprite.png',
+      imgName: 'images/sprite.png',
+      imgPath: '../../images/sprite.png',
       cssName: '_sprite.scss'
     }));
-  var spriteImg = spriteData.img.pipe(gulp.dest(''));
-  var spriteCss = spriteData.css.pipe(gulp.dest('./scss/modules/'));
+  var spriteImg = spriteData.img.pipe(buffer())
+                                .pipe(imagemin())
+                                .pipe(gulp.dest('./'));
+  var spriteCss = spriteData.css.pipe(gulp.dest('scss/modules/'));
   return (spriteImg && spriteCss);
 });
+gulp.task('watch', function(){
+  gulp.watch('images/sprite/**/*', ['sprite']);
+  gulp.watch(['scss/**/*.scss'], ['sass']);
+  gulp.watch(['js/**/*.js'], ['scripts']);
+});
 // Start a server with BrowserSync to preview the site in
-gulp.task('server', ['sprite', 'sass'], function() {
+gulp.task('server', ['watch'], function() {
   browserSync.init({
     proxy: 'http://jslearn.af/'
   });
-  gulp.watch(['./js/**/*.js'], ['scripts']);
-  gulp.watch(['./scss/**/*.scss'], ['sass']);
-  gulp.watch('./images/sprite**/*', ['sprite']);
+  gulp.watch(['js/**/*.js'], ['scripts']);
+  gulp.watch(['scss/**/*.scss'], ['sass']);
+  gulp.watch('images/sprite**/*', ['sprite']);
 });
 
 gulp.task('default', ['sass', 'scripts', 'server'], function() {
   gutil.log('watching for .scss file changes in /scss.');
   gulp.watch(['scss/**/*.scss'], ['sass']);
-  gulp.watch('./images/sprite**/*', ['sprite']);
+  gulp.watch('images/sprite**/*', ['sprite']);
 });
 
-gulp.task('build', ['sass', 'scripts']);
+gulp.task('build', ['sprite', 'sass', 'scripts']);
+

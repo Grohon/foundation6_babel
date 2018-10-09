@@ -1,4 +1,10 @@
+@import 'modules/sprite';
+
 // hello world
 body{
   margin: 0;
+}
+
+.acc-close{
+  @include sprite($acc-close);
 }
