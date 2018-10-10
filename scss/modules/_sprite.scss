@@ -9,22 +9,22 @@
 //
 // At the bottom of this section, we provide information about the spritesheet itself
 // $spritesheet: width height image $spritesheet-sprites;
-$acc-close-name: 'acc-close';
-$acc-close-x: 0px;
-$acc-close-y: 0px;
-$acc-close-offset-x: 0px;
-$acc-close-offset-y: 0px;
-$acc-close-width: 28px;
-$acc-close-height: 25px;
-$acc-close-total-width: 28px;
-$acc-close-total-height: 25px;
-$acc-close-image: '../../images/sprite.png';
-$acc-close: (0px, 0px, 0px, 0px, 28px, 25px, 28px, 25px, '../../images/sprite.png', 'acc-close', );
-$spritesheet-width: 28px;
-$spritesheet-height: 25px;
+$menu-opener-name: 'menu-opener';
+$menu-opener-x: 0px;
+$menu-opener-y: 0px;
+$menu-opener-offset-x: 0px;
+$menu-opener-offset-y: 0px;
+$menu-opener-width: 16px;
+$menu-opener-height: 12px;
+$menu-opener-total-width: 16px;
+$menu-opener-total-height: 12px;
+$menu-opener-image: '../../images/sprite.png';
+$menu-opener: (0px, 0px, 0px, 0px, 16px, 12px, 16px, 12px, '../../images/sprite.png', 'menu-opener', );
+$spritesheet-width: 16px;
+$spritesheet-height: 12px;
 $spritesheet-image: '../../images/sprite.png';
-$spritesheet-sprites: ($acc-close, );
-$spritesheet: (28px, 25px, '../../images/sprite.png', $spritesheet-sprites, );
+$spritesheet-sprites: ($menu-opener, );
+$spritesheet: (16px, 12px, '../../images/sprite.png', $spritesheet-sprites, );
 
 // The provided mixins are intended to be used with the array-like variables
 //

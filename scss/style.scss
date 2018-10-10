@@ -1,10 +1,9 @@
-@import 'modules/sprite';
-
 // hello world
-body{
-  margin: 0;
-}
+@import 'modules/sprite';
+@import "foundation-conf";
 
-.acc-close{
-  @include sprite($acc-close);
-}
+@import 'global';
+// Pages
+// @media print {
+//   @import "print";
+// }
